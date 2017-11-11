@@ -20,25 +20,22 @@ namespace CoreClientTest
                     Console.WriteLine($"Can't connect to {address}:{port}");
                     return;
                 }
-                
+
                 Console.WriteLine($"Connected to {address}:{port}");
 
-                while (true)
+                var message = string.Empty;
+
+                while (!message.Equals("quit", StringComparison.OrdinalIgnoreCase))
                 {
                     Console.Write($"Enter data: ");
-                    var message = Console.ReadLine();
+                    message = Console.ReadLine();
 
-                    if (message.Equals("quit", StringComparison.OrdinalIgnoreCase))
-                    {
-                        break;
-                    }
-                    
                     var sendData = Encoding.ASCII.GetBytes(message);
 
                     client.GetStream().Write(sendData, 0, sendData.Length);
                 }
-                Console.WriteLine("Disconnecting.");
                 client.Close();
+                Console.WriteLine("Disconnected.");
             }
         }
     }

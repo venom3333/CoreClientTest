@@ -3,3 +3,5 @@
 ################################################################################
 
 /.vs/CoreClientTest/v15
+/CoreClientTest/bin
+/CoreClientTest/obj
